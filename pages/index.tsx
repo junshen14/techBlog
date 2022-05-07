@@ -3,23 +3,7 @@ import Head from 'next/head'
 import { PostCard, PostWidget, Category } from '../components/index.js'
 import { getPost } from '../services/index'
 
-const post = [
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-  { title: 'React Testing', excerpt: 'iewnfnweine' },
-  { title: 'Next js testing', excerpt: 'ewinweinemowenien' },
-]
-
 const Home: NextPage = ({ posts }) => {
-  console.log(posts)
   return (
     <div className="container mx-auto mb-8 px-10">
       <Head>
