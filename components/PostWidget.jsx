@@ -9,7 +9,6 @@ const PostWidget = ({ categories, slug }) => {
   useEffect(() => {
     if (slug) {
       getSimilarPosts(categories, slug).then((result) => {
-        console.log(categories, slug)
         setRelatedPosts(result)
       })
     } else {
@@ -18,8 +17,6 @@ const PostWidget = ({ categories, slug }) => {
       })
     }
   }, [slug])
-
-  console.log(relatedPosts)
 
   return (
     <div className="mb-8 rounded-lg bg-white p-8 shadow-lg">
