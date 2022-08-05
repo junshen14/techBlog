@@ -4,7 +4,7 @@ import moment from 'moment'
 
 const PostCard = ({ post }) => {
   return (
-    <div className="mb-8 rounded-lg bg-white p-0 pb-12 shadow-lg lg:p-8">
+    <div className="mb-8 rounded-lg p-0 pb-12 text-white shadow-lg lg:p-8">
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
         <img
           src={post.node.featuredImage.url}
@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
       </div>
 
       <Link href={`/post/${post.node.slug}`}>
-        <h1 className="duration-400 mb-8 cursor-pointer text-center text-3xl font-semibold transition hover:text-pink-600">
+        <h1 className="duration-400 mb-8 cursor-pointer text-center text-3xl font-semibold transition hover:text-red-600">
           {post.node.title}
         </h1>
       </Link>
@@ -27,14 +27,14 @@ const PostCard = ({ post }) => {
             className="rounded-full align-middle"
             src={post.node.author.photo.url}
           />
-          <p className="ml-2 inline align-middle text-lg text-gray-700">
+          <p className="ml-2 inline align-middle text-lg text-white">
             {post.node.author.name}
           </p>
         </div>
-        <div className="font-medium text-gray-700">
+        <div className="font-medium text-white  ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="mr-2 inline h-6 w-6 text-pink-500"
+            className="mr-2 inline h-6 w-6 text-red-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -51,12 +51,12 @@ const PostCard = ({ post }) => {
           </span>
         </div>
       </div>
-      <p className="mb-8 px-4 text-center text-lg font-normal text-gray-700 lg:px-20">
+      <p className="mb-8 px-4 text-center text-lg font-normal text-white lg:px-20">
         {post.node.excerpt}
       </p>
       <div className="text-center">
         <Link href={`/post/${post.node.slug}`}>
-          <span className="inline-block transform cursor-pointer rounded-full bg-pink-600 px-8 py-3 text-lg font-medium text-white transition duration-500 hover:-translate-y-1">
+          <span className="inline-block transform cursor-pointer rounded-full bg-red-600 px-8 py-3 text-lg font-medium text-white transition duration-500 hover:-translate-y-1">
             Continue Reading
           </span>
         </Link>

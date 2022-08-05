@@ -145,6 +145,7 @@ export const getPostDetail = async (slug) => {
             url
           }
         }
+        readingTime
         createdAt
         slug
         title

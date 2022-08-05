@@ -1,6 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { PostCard, PostWidget, Category } from '../components/index.js'
+import {
+  PostCard,
+  PostWidget,
+  Category,
+  Advertisement,
+} from '../components/index.js'
 import { getPost } from '../services/index'
 
 const Home: NextPage = ({ posts }) => {
@@ -20,6 +25,7 @@ const Home: NextPage = ({ posts }) => {
           <div className="relative top-8 lg:sticky">
             <PostWidget />
             <Category />
+            <Advertisement />
           </div>
         </div>
       </div>

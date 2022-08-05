@@ -8,6 +8,7 @@ import {
   Author,
   Comments,
   CommentsForm,
+  Advertisement,
 } from '../../components'
 
 const PostDetails = ({ post }) => {
@@ -27,6 +28,7 @@ const PostDetails = ({ post }) => {
               categories={post.categories.map((category) => category.slug)}
             />
             <Category />
+            <Advertisement />
           </div>
         </div>
       </div>

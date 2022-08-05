@@ -1,10 +1,12 @@
 import React from 'react'
 import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
-
+    console.log(obj)
     if (obj) {
       if (obj.bold) {
         modifiedText = <b key={index}>{text}</b>
@@ -17,12 +19,35 @@ const PostDetail = ({ post }) => {
       if (obj.underline) {
         modifiedText = <u key={index}>{text}</u>
       }
+
+      if (obj.href) {
+        let tempText = ''
+        {
+          obj.children.map((eachLinkText) => {
+            tempText += eachLinkText.text
+          })
+        }
+
+        modifiedText = (
+          <a href={obj.href} className="text-blue-400 underline">
+            {tempText}
+          </a>
+        )
+      }
     }
 
     switch (type) {
+      case 'heading-two':
+        return (
+          <h2 key={index} className="mb-4 text-xl font-semibold text-white">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </h2>
+        )
       case 'heading-three':
         return (
-          <h3 key={index} className="mb-4 text-xl font-semibold">
+          <h3 key={index} className="mb-4 text-xl font-semibold text-white">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -30,7 +55,7 @@ const PostDetail = ({ post }) => {
         )
       case 'paragraph':
         return (
-          <p key={index} className="mb-8">
+          <p key={index} className="mb-8 text-white">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -38,7 +63,7 @@ const PostDetail = ({ post }) => {
         )
       case 'heading-four':
         return (
-          <h4 key={index} className="text-md mb-4 font-semibold">
+          <h4 key={index} className="text-md mb-4 font-semibold text-white">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -60,7 +85,7 @@ const PostDetail = ({ post }) => {
   }
 
   return (
-    <div className="mb-8 rounded-lg bg-white pb-12 shadow-lg lg:p-8">
+    <div className="mb-8 rounded-lg pb-12 shadow-lg lg:p-8">
       <div className="relative mb-6 overflow-hidden shadow-md">
         <img
           src={post.featuredImage.url}
@@ -68,7 +93,7 @@ const PostDetail = ({ post }) => {
           className="h-full w-full rounded-t-lg object-top"
         />
       </div>
-      <div className="mb-8 flex w-full items-center">
+      <div className="mb-4 flex w-full items-center">
         <div className=" mr-5 flex items-center lg:mb-0 lg:w-auto">
           <img
             alt={post.author.name}
@@ -77,14 +102,14 @@ const PostDetail = ({ post }) => {
             className="rounded-full align-middle"
             src={post.author.photo.url}
           />
-          <p className="ml-2 inline align-middle text-lg text-gray-700">
+          <p className="ml-2 inline align-middle text-lg text-white">
             {post.author.name}
           </p>
         </div>
-        <div className="font-medium text-gray-700">
+        <div className="mr-5 font-medium text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="mr-2 inline h-6 w-6 text-pink-500"
+            className="mr-2 inline h-6 w-6 text-red-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -101,7 +126,16 @@ const PostDetail = ({ post }) => {
           </span>
         </div>
       </div>
-      <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
+      <div className="mb-8 flex w-full items-center">
+        <FontAwesomeIcon
+          icon={faBook}
+          className="mr-2 inline h-6 w-6 text-red-500"
+        />
+        <div className="font-medium text-white">
+          <span className="align-middle">{post.readingTime} min read</span>
+        </div>
+      </div>
+      <h1 className="mb-8 text-3xl font-semibold text-white">{post.title}</h1>
       {post.content.raw.children.map((typeObj, index) => {
         const children = typeObj.children.map((item, itemIndex) =>
           getContentFragment(itemIndex, item.text, item)
