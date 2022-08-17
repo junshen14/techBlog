@@ -47,7 +47,7 @@ const about = () => {
           Technology evolves at a rapid pace, and new pieces of technology are
           constantly being introduced to replace others that have become
           obsolete. Day after day, a significant number of people are starting
-          to look forward to reading tech blogs.
+          to look forward to reading tech blog.
         </CenterDescrp1>
       </Descrip1Container>
       <Descrip2Container>
