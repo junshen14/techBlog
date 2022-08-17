@@ -180,7 +180,7 @@ export const submitComment = async (obj) => {
 
     return result.json()
   } catch (error) {
-    console.log(error)
+    //console.log(error)
   }
 }
 
